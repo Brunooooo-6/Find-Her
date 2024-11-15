@@ -1,0 +1,94 @@
+let currentScene = 1;
+let img1, img2, img3, img4;
+let button1, button2, button3;
+
+function preload() {
+            
+            img1 = loadImage('FIND HER/Scene-1.jpg');
+            img2 = loadImage('FIND HER/Scene-2.jpg');
+            img3 = loadImage('FIND HER/Scene-3.jpg');
+            img4 = loadImage('FIND HER/Scene-4.jpg');
+        }
+
+function setup() {
+            createCanvas(400, 600); // Changed to 400x600
+            
+            // Create invisible buttons
+            button1 = new Button(50, 250, 300, 100);
+            button2 = new Button(50, 250, 300, 100);
+            button3 = new Button(50, 250, 300, 100);
+        }
+
+function draw() {
+            background(220);
+            
+            switch(currentScene) {
+                case 1:
+                    drawScene1();
+                    break;
+                case 2:
+                    drawScene2();
+                    break;
+                case 3:
+                    drawScene3();
+                    break;
+                case 4:
+                    drawScene4();
+                    break;
+            }
+        }
+
+        function drawScene1() {
+            image(img1, 0, 0, width, height);
+            button1.display();
+        }
+
+        function drawScene2() {
+            image(img2, 0, 0, width, height);
+            button2.display();
+        }
+
+        function drawScene3() {
+            image(img3, 0, 0, width, height);
+            button3.display();
+        }
+
+        function drawScene4() {
+            image(img4, 0, 0, width, height);
+        }
+
+        function mousePressed() {
+            switch(currentScene) {
+                case 1:
+                    if (button1.isClicked(mouseX, mouseY)) {
+                        currentScene = 2;
+                    }
+                    break;
+                case 2:
+                    if (button2.isClicked(mouseX, mouseY)) {
+                        currentScene = 3;
+                    }
+                    break;
+                case 3:
+                    if (button3.isClicked(mouseX, mouseY)) {
+                        currentScene = 4;
+                    }
+                    break;
+            }
+        }
+
+        class Button {
+            constructor(x, y, w, h) {
+                this.x = x;
+                this.y = y;
+                this.w = w;
+                this.h = h;
+            }
+
+            display() {
+                
+            isClicked(px, py) 
+                return px > this.x && px < this.x + this.w && 
+                       py > this.y && py < this.y + this.h;
+            }
+        }
